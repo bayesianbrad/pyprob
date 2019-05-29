@@ -41,7 +41,7 @@ class Model():
                          **kwargs):
         state._init_traces(func=self.forward, trace_mode=trace_mode, prior_inflation=prior_inflation, inference_engine=inference_engine, inference_network=inference_network, observe=observe, metropolis_hastings_trace=metropolis_hastings_trace, address_dictionary=self._address_dictionary, likelihood_importance=likelihood_importance)
         while True:
-            state._begin_trace(file_name=file_name, file_sync_timeout=file_sync_timeout)
+            state._begin_trace() #file_name=file_name, file_sync_timeout=file_sync_timeout)
             result = self.forward(*args, **kwargs)
             trace = state._end_trace(result)
             yield trace
